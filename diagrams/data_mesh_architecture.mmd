@@ -1,0 +1,81 @@
+graph TB
+    subgraph "Data Mesh Architecture"
+        subgraph "Domain: Sales"
+            DP1[Data Product:<br/>Customer Analytics]
+            DP2[Data Product:<br/>Sales Transactions]
+        end
+        
+        subgraph "Domain: Marketing"
+            DP3[Data Product:<br/>Campaign Performance]
+            DP4[Data Product:<br/>Customer Segmentation]
+        end
+        
+        subgraph "Domain: Finance"
+            DP5[Data Product:<br/>Revenue Analytics]
+            DP6[Data Product:<br/>Cost Analysis]
+        end
+        
+        subgraph "Self-Serve Data Platform"
+            CATALOG[Data Catalog &<br/>Discovery]
+            INFRA[Infrastructure<br/>as Code]
+            PIPELINE[Pipeline<br/>Templates]
+            MONITOR[Monitoring &<br/>Observability]
+        end
+        
+        subgraph "Federated Governance"
+            POLICY[Global Policies]
+            QUALITY[Quality Standards]
+            SECURITY[Security & Privacy]
+            COMPLIANCE[Compliance Rules]
+        end
+        
+        subgraph "Data Consumers"
+            ANALYTICS[Analytics Teams]
+            ML[ML/AI Applications]
+            BI[BI Dashboards]
+            API[External APIs]
+        end
+    end
+    
+    DP1 --> CATALOG
+    DP2 --> CATALOG
+    DP3 --> CATALOG
+    DP4 --> CATALOG
+    DP5 --> CATALOG
+    DP6 --> CATALOG
+    
+    CATALOG --> ANALYTICS
+    CATALOG --> ML
+    CATALOG --> BI
+    CATALOG --> API
+    
+    INFRA -.provides.-> DP1
+    INFRA -.provides.-> DP2
+    INFRA -.provides.-> DP3
+    INFRA -.provides.-> DP4
+    INFRA -.provides.-> DP5
+    INFRA -.provides.-> DP6
+    
+    POLICY -.governs.-> DP1
+    POLICY -.governs.-> DP2
+    POLICY -.governs.-> DP3
+    POLICY -.governs.-> DP4
+    POLICY -.governs.-> DP5
+    POLICY -.governs.-> DP6
+    
+    QUALITY -.ensures.-> DP1
+    QUALITY -.ensures.-> DP2
+    QUALITY -.ensures.-> DP3
+    
+    MONITOR -.observes.-> DP1
+    MONITOR -.observes.-> DP2
+    MONITOR -.observes.-> DP3
+    
+    style DP1 fill:#4CAF50
+    style DP2 fill:#4CAF50
+    style DP3 fill:#2196F3
+    style DP4 fill:#2196F3
+    style DP5 fill:#FF9800
+    style DP6 fill:#FF9800
+    style CATALOG fill:#9C27B0
+    style POLICY fill:#F44336
