@@ -1,38 +1,39 @@
 [
   {
-    "customer_id": "CUST456",
+    "customer_id": "CUST001",
     "name": "João Silva",
     "email": "joao.silva@example.com",
     "registration_date": "2024-01-15",
     "lifetime_value": 5000.00,
     "tier": "gold",
-    "location": "São Paulo, SP"
+    "last_interaction": "2025-10-07 10:30:00"
   },
   {
-    "customer_id": "CUST457",
+    "customer_id": "CUST002",
     "name": "Maria Santos",
     "email": "maria.santos@example.com",
     "registration_date": "2024-03-20",
     "lifetime_value": 1500.00,
     "tier": "silver",
-    "location": "Rio de Janeiro, RJ"
+    "last_interaction": "2025-10-06 14:00:00"
   },
   {
-    "customer_id": "CUST458",
+    "customer_id": "CUST003",
     "name": "Pedro Oliveira",
     "email": "pedro.oliveira@example.com",
     "registration_date": "2025-05-10",
     "lifetime_value": 500.00,
     "tier": "bronze",
-    "location": "Belo Horizonte, MG"
+    "last_interaction": "2025-10-05 09:15:00"
   },
   {
-    "customer_id": "CUST459",
-    "name": "Ana Costa",
-    "email": "ana.costa@example.com",
-    "registration_date": "2025-02-28",
-    "lifetime_value": 2200.00,
-    "tier": "silver",
-    "location": "Curitiba, PR"
+    "customer_id": "CUST004",
+    "name": "Ana Souza",
+    "email": "ana.souza@example.com",
+    "registration_date": "2024-02-01",
+    "lifetime_value": 7500.00,
+    "tier": "gold",
+    "last_interaction": "2025-10-07 11:00:00"
   }
 ]
+

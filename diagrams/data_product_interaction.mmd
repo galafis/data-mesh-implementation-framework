@@ -1,0 +1,30 @@
+graph TD
+    subgraph "Implementation Details"
+        A[DomainDataProduct] --> B(SalesDataProduct)
+        A --> C(CustomerDataProduct)
+        
+        subgraph "Data Sources"
+            D[("sales.json")]
+            E[("customers.json")]
+        end
+
+        subgraph "Data Consumers"
+            F[Applications / Notebooks]
+        end
+
+        D -- "load_data_from_json()" --> B
+        E -- "load_data_from_json()" --> C
+
+        B -- "get_sales_metrics()" --> F
+        C -- "get_customer_segments()" --> F
+
+        A -- "Manages Metadata, Schema, SLA" --- B
+        A -- "Manages Metadata, Schema, SLA" --- C
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style D fill:#afa,stroke:#333,stroke-width:1px
+    style E fill:#afa,stroke:#333,stroke-width:1px
+    style F fill:#ffc,stroke:#333,stroke-width:2px

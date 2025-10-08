@@ -5,8 +5,8 @@
     "customer_id": "CUST456",
     "amount": 150.00,
     "date": "2025-10-01",
-    "payment_method": "credit_card",
-    "status": "completed"
+    "product_category": "Electronics",
+    "region": "North America"
   },
   {
     "transaction_id": "TXN002",
@@ -14,34 +14,44 @@
     "customer_id": "CUST457",
     "amount": 200.00,
     "date": "2025-10-02",
-    "payment_method": "debit_card",
-    "status": "completed"
+    "product_category": "Books",
+    "region": "Europe"
   },
   {
     "transaction_id": "TXN003",
-    "product_id": "PROD125",
-    "customer_id": "CUST458",
-    "amount": 75.50,
+    "product_id": "PROD123",
+    "customer_id": "CUST456",
+    "amount": 300.50,
     "date": "2025-10-03",
-    "payment_method": "pix",
-    "status": "completed"
+    "product_category": "Electronics",
+    "region": "North America"
   },
   {
     "transaction_id": "TXN004",
-    "product_id": "PROD123",
-    "customer_id": "CUST459",
-    "amount": 150.00,
-    "date": "2025-10-04",
-    "payment_method": "credit_card",
-    "status": "pending"
+    "product_id": "PROD125",
+    "customer_id": "CUST458",
+    "amount": 50.25,
+    "date": "2025-10-03",
+    "product_category": "Apparel",
+    "region": "Asia"
   },
   {
     "transaction_id": "TXN005",
+    "product_id": "PROD124",
+    "customer_id": "CUST457",
+    "amount": 120.00,
+    "date": "2025-10-04",
+    "product_category": "Books",
+    "region": "Europe"
+  },
+  {
+    "transaction_id": "TXN006",
     "product_id": "PROD126",
-    "customer_id": "CUST456",
-    "amount": 320.00,
+    "customer_id": "CUST459",
+    "amount": 75.00,
     "date": "2025-10-05",
-    "payment_method": "credit_card",
-    "status": "completed"
+    "product_category": "Home Goods",
+    "region": "North America"
   }
 ]
+
