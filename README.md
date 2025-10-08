@@ -1,7 +1,10 @@
 # Data Mesh Implementation Framework
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Pytest](https://img.shields.io/badge/Testing-Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
+![Requests](https://img.shields.io/badge/HTTP-Requests-2CA5E0?style=for-the-badge&logo=python&logoColor=white)
 ![Mermaid](https://img.shields.io/badge/Diagrams-Mermaid-orange?style=for-the-badge&logo=mermaid&logoColor=white)
+![Data Mesh](https://img.shields.io/badge/Architecture-Data%20Mesh-purple?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
 ---
@@ -17,6 +20,7 @@ O principal objetivo deste projeto é **fornecer um guia detalhado e exemplos de
 ### ✨ Destaques
 
 - **Data Products Orientados a Domínio**: Implementação de classes `DomainDataProduct`, `SalesDataProduct` e `CustomerDataProduct` que encapsulam dados, metadados, lógica de acesso e métricas, demonstrando a propriedade de domínio e o tratamento de dados como produto.
+- **Integração com APIs Externas**: Módulo `api_integration.py` que demonstra como enriquecer Data Products com dados reais de APIs públicas, incluindo integração completa com a World Bank API para dados de desenvolvimento mundial (GDP, população, indicadores econômicos).
 - **Operações CRUD e Métricas**: Exemplos práticos de ingestão, consulta, atualização e remoção de dados, além da coleta de métricas de uso e acesso para cada Data Product, garantindo observabilidade e governança.
 - **Estrutura Modular e Escalável**: O framework é projetado para ser modular, permitindo a fácil extensão e adaptação a diferentes domínios de negócio e requisitos de dados.
 - **Testes Abrangentes**: Inclui testes unitários e de integração para todas as funcionalidades, assegurando a confiabilidade e a correção das implementações dos Data Products.
@@ -47,6 +51,7 @@ The main objective of this project is to **provide a detailed guide and function
 ### ✨ Highlights
 
 - **Domain-Oriented Data Products**: Implementation of `DomainDataProduct`, `SalesDataProduct`, and `CustomerDataProduct` classes that encapsulate data, metadata, access logic, and metrics, demonstrating domain ownership and treating data as a product.
+- **External API Integration**: `api_integration.py` module demonstrating how to enrich Data Products with real data from public APIs, including complete integration with the World Bank API for global development data (GDP, population, economic indicators).
 - **CRUD Operations and Metrics**: Practical examples of data ingestion, querying, updating, and removal, along with the collection of usage and access metrics for each Data Product, ensuring observability and governance.
 - **Modular and Scalable Structure**: The framework is designed to be modular, allowing for easy extension and adaptation to different business domains and data requirements.
 - **Comprehensive Testing**: Includes unit and integration tests for all functionalities, ensuring the reliability and correctness of the Data Product implementations.
