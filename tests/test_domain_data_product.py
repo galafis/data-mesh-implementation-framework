@@ -184,26 +184,21 @@ class TestDataSchema(unittest.TestCase):
         self.assertEqual(len(schema.indexes), 1)
 
 
-def run_tests():
-    """Executa todos os testes"""
-    loader = unittest.TestLoader()
-    suite = unittest.TestSuite()
-    
-    # Adicionar todos os testes
-    suite.addTests(loader.loadTestsFromTestCase(TestDomainDataProduct))
-    suite.addTests(loader.loadTestsFromTestCase(TestDataProductMetadata))
-    suite.addTests(loader.loadTestsFromTestCase(TestDataSchema))
-    
-    # Executar os testes
-    runner = unittest.TextTestRunner(verbosity=2)
-    result = runner.run(suite)
-    
-    return result.wasSuccessful()
-
-
 if __name__ == "__main__":
     print("=" * 80)
     print("Executando testes do Data Mesh Implementation Framework")
     print("=" * 80)
-    success = run_tests()
-    sys.exit(0 if success else 1)
+    # Criar um TextTestRunner com verbosity=2 para ver detalhes dos testes
+    runner = unittest.TextTestRunner(verbosity=2)
+    # Criar uma suíte de testes e adicionar todos os testes de cada classe
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(TestDomainDataProduct))
+    suite.addTest(unittest.makeSuite(TestDataProductMetadata))
+    suite.addTest(unittest.makeSuite(TestDataSchema))
+    
+    # Executar a suíte de testes
+    result = runner.run(suite)
+    
+    # Sair com código de erro se algum teste falhar
+    sys.exit(0 if result.wasSuccessful() else 1)
+

@@ -1,0 +1,38 @@
+[
+  {
+    "customer_id": "CUST456",
+    "name": "João Silva",
+    "email": "joao.silva@example.com",
+    "registration_date": "2024-01-15",
+    "lifetime_value": 5000.00,
+    "tier": "gold",
+    "location": "São Paulo, SP"
+  },
+  {
+    "customer_id": "CUST457",
+    "name": "Maria Santos",
+    "email": "maria.santos@example.com",
+    "registration_date": "2024-03-20",
+    "lifetime_value": 1500.00,
+    "tier": "silver",
+    "location": "Rio de Janeiro, RJ"
+  },
+  {
+    "customer_id": "CUST458",
+    "name": "Pedro Oliveira",
+    "email": "pedro.oliveira@example.com",
+    "registration_date": "2025-05-10",
+    "lifetime_value": 500.00,
+    "tier": "bronze",
+    "location": "Belo Horizonte, MG"
+  },
+  {
+    "customer_id": "CUST459",
+    "name": "Ana Costa",
+    "email": "ana.costa@example.com",
+    "registration_date": "2025-02-28",
+    "lifetime_value": 2200.00,
+    "tier": "silver",
+    "location": "Curitiba, PR"
+  }
+]

@@ -27,21 +27,7 @@ O principal objetivo deste projeto é **fornecer um guia detalhado e exemplos de
 
 conceitos e a aplicação prática.
 
-### 📊 Visualização
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)
-![Mermaid](https://img.shields.io/badge/Diagrams-Mermaid-orange?style=for-the-badge&logo=mermaid)
-
-Este projeto pode ser visualizado e interagido através do GitHub Pages: [https://gabrieldemetrioslafis.github.io/data-mesh-implementation-framework/](https://gabrieldemetrioslafis.github.io/data-mesh-implementation-framework/)
-
-This project can be viewed and interacted with via GitHub Pages: [https://gabrieldemetrioslafis.github.io/data-mesh-implementation-framework/](https://gabrieldemetrioslafis.github.io/data-mesh-implementation-framework/)
-
-![Arquitetura Data Mesh](images/data_mesh_implementation_framework.png)
-
-
-*Diagrama ilustrativo da arquitetura Data Mesh proposta, destacando os domínios de dados e a plataforma self-service.*
-
----
 
 ## 🇬🇧 Data Mesh Implementation Framework
 
