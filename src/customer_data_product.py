@@ -70,7 +70,7 @@ class CustomerDataProduct(DomainDataProduct):
         Adiciona dados de cliente ao Data Product, com validações adicionais.
         """
         if not self._validate_customer_data(customer_data):
-            print(f"✗ Falha ao adicionar dados: Validação de dados de cliente falhou para {customer_data.get("customer_id", "N/A")}")
+            print(f"✗ Falha ao adicionar dados: Validação de dados de cliente falhou para {customer_data.get('customer_id', 'N/A')}")
             return False
         
         if not super().add_data(customer_data):
@@ -109,14 +109,14 @@ class CustomerDataProduct(DomainDataProduct):
         
         # Validação de formato de e-mail
         if not re.match(r"[^@]+@[^@]+\.[^@]+", customer_data["email"]):
-            print(f"✗ Formato de e-mail inválido para {customer_data["email"]}")
+            print(f"✗ Formato de e-mail inválido para {customer_data['email']}")
             return False
 
         # Validação de formato de data de registro
         try:
             datetime.strptime(customer_data["registration_date"], "%Y-%m-%d")
         except ValueError:
-            print(f"✗ Formato de registration_date inválido para {customer_data["registration_date"]}. Esperado YYYY-MM-DD.")
+            print(f"✗ Formato de registration_date inválido para {customer_data['registration_date']}. Esperado YYYY-MM-DD.")
             return False
         
         # Validação de formato de última interação (se presente)
@@ -124,17 +124,17 @@ class CustomerDataProduct(DomainDataProduct):
             try:
                 datetime.strptime(customer_data["last_interaction"], "%Y-%m-%d %H:%M:%S")
             except ValueError:
-                print(f"✗ Formato de last_interaction inválido para {customer_data["last_interaction"]}. Esperado YYYY-MM-DD HH:MM:SS.")
+                print(f"✗ Formato de last_interaction inválido para {customer_data['last_interaction']}. Esperado YYYY-MM-DD HH:MM:SS.")
                 return False
 
         # Validação de valor de lifetime_value
         if not isinstance(customer_data["lifetime_value"], (int, float)) or customer_data["lifetime_value"] < 0:
-            print(f"✗ Valor de lifetime_value inválido para {customer_data["lifetime_value"]}. Deve ser um número não negativo.")
+            print(f"✗ Valor de lifetime_value inválido para {customer_data['lifetime_value']}. Deve ser um número não negativo.")
             return False
         
         # Validação de unicidade de customer_id
         if any(record.get("customer_id") == customer_data["customer_id"] for record in self._data_store):
-            print(f"✗ customer_id {customer_data["customer_id"]} já existe. Clientes devem ser únicos.")
+            print(f"✗ customer_id {customer_data['customer_id']} já existe. Clientes devem ser únicos.")
             return False
 
         return True
@@ -365,14 +365,14 @@ if __name__ == "__main__":
     for cust_id in high_value_ids:
         customer_details = customer_product.query({"customer_id": cust_id})
         if customer_details:
-            print(f"  - {customer_details[0]["name"]} ({customer_details[0]["email"]}) - LTV: R$ {customer_details[0]["lifetime_value"]:.2f}")
+            print(f"  - {customer_details[0]['name']} ({customer_details[0]['email']}) - LTV: R$ {customer_details[0]['lifetime_value']:.2f}")
 
     # Atualizar um cliente
     print("\nAtualizando tier do cliente CUST003...")
     customer_product.update_data({"customer_id": "CUST003"}, {"tier": "silver", "lifetime_value": 1200.00})
     updated_customer = customer_product.query({"customer_id": "CUST003"})
     if updated_customer:
-        print(f"Cliente CUST003 atualizado: Tier {updated_customer[0]["tier"]}, LTV R$ {updated_customer[0]["lifetime_value"]:.2f}")
+        print(f"Cliente CUST003 atualizado: Tier {updated_customer[0]['tier']}, LTV R$ {updated_customer[0]['lifetime_value']:.2f}")
     
     # Remover um cliente
     print("\nRemovendo cliente CUST002...")
