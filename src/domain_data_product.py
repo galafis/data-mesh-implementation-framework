@@ -80,6 +80,8 @@ class DomainDataProduct:
         self.sla = sla
         self._data_store: List[Dict[str, Any]] = []  # Armazenamento interno de dados
         self._access_log: List[Dict[str, Any]] = []  # Log de acessos para auditoria
+        self._upstream_dependencies: List[str] = []  # Data Products dos quais este depende
+        self._downstream_consumers: List[str] = []  # Data Products que consomem este
     
     def publish(self) -> bool:
         """
@@ -267,9 +269,69 @@ class DomainDataProduct:
             "owner": self.metadata.owner,
             "created_at": self.metadata.created_at.isoformat(),
             "updated_at": self.metadata.updated_at.isoformat(),
-            "upstream_dependencies": [],  # Seria populado com dependências reais
-            "downstream_consumers": []     # Seria populado com consumidores reais
+            "upstream_dependencies": self._upstream_dependencies,
+            "downstream_consumers": self._downstream_consumers
         }
+    
+    def add_dependency(self, data_product: 'DomainDataProduct') -> None:
+        """
+        Adiciona uma dependência upstream (outro Data Product que este consome).
+        
+        Args:
+            data_product: Data Product do qual este depende
+        """
+        dep_name = data_product.metadata.name
+        if dep_name not in self._upstream_dependencies:
+            self._upstream_dependencies.append(dep_name)
+            print(f"✓ Dependência adicionada: {self.metadata.name} -> {dep_name}")
+    
+    def add_consumer(self, data_product: 'DomainDataProduct') -> None:
+        """
+        Adiciona um consumidor downstream (outro Data Product que consome este).
+        
+        Args:
+            data_product: Data Product que consome este
+        """
+        consumer_name = data_product.metadata.name
+        if consumer_name not in self._downstream_consumers:
+            self._downstream_consumers.append(consumer_name)
+            print(f"✓ Consumidor adicionado: {consumer_name} -> {self.metadata.name}")
+    
+    def load_data_from_json(self, filepath: str) -> int:
+        """
+        Carrega dados de um arquivo JSON e os adiciona ao Data Product.
+        
+        Args:
+            filepath: Caminho para o arquivo JSON
+            
+        Returns:
+            Número de registros carregados com sucesso
+        """
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data_list = json.load(f)
+            
+            if not isinstance(data_list, list):
+                print(f"✗ Erro: Arquivo {filepath} não contém uma lista de registros")
+                return 0
+            
+            loaded_count = 0
+            for data in data_list:
+                if self.add_data(data):
+                    loaded_count += 1
+            
+            print(f"✓ {loaded_count} de {len(data_list)} registros carregados de {filepath}")
+            return loaded_count
+            
+        except FileNotFoundError:
+            print(f"✗ Erro: Arquivo {filepath} não encontrado")
+            return 0
+        except json.JSONDecodeError as e:
+            print(f"✗ Erro ao decodificar JSON de {filepath}: {e}")
+            return 0
+        except Exception as e:
+            print(f"✗ Erro inesperado ao carregar {filepath}: {e}")
+            return 0
 
 
 def example_usage():

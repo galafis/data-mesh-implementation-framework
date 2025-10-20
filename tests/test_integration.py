@@ -4,11 +4,11 @@ import os
 import json
 from datetime import datetime
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from domain_data_product import DomainDataProduct, DataProductStatus
-from sales_data_product import SalesDataProduct
-from customer_data_product import CustomerDataProduct
+from src.domain_data_product import DomainDataProduct, DataProductStatus
+from src.sales_data_product import SalesDataProduct
+from src.customer_data_product import CustomerDataProduct
 
 class TestIntegration(unittest.TestCase):
     """Testes de integração entre os Data Products"""

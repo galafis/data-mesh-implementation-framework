@@ -1,3 +1,4 @@
 pandas
 pytest
+pytest-cov
 requests>=2.31.0
