@@ -3,12 +3,14 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Tests](https://img.shields.io/github/actions/workflow/status/galafis/data-mesh-implementation-framework/tests.yml?branch=main&label=Tests&style=for-the-badge&logo=github)
 ![Pytest](https://img.shields.io/badge/Testing-Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
-![Coverage](https://img.shields.io/badge/Coverage-%3E80%25-brightgreen?style=for-the-badge)
+![Coverage](https://img.shields.io/badge/Coverage-62%25-yellow?style=for-the-badge)
+![Tests](https://img.shields.io/badge/Tests-49%20Passing-success?style=for-the-badge)
 ![Requests](https://img.shields.io/badge/HTTP-Requests-2CA5E0?style=for-the-badge&logo=python&logoColor=white)
 ![Mermaid](https://img.shields.io/badge/Diagrams-Mermaid-orange?style=for-the-badge&logo=mermaid&logoColor=white)
 ![Data Mesh](https://img.shields.io/badge/Architecture-Data%20Mesh-purple?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
+![Security](https://img.shields.io/badge/Security-CodeQL%20Verified-brightgreen?style=for-the-badge)
 
 ---
 
@@ -338,8 +340,9 @@ python tests/test_domain_data_product.py
 
 - **test_domain_data_product.py**: Testes unitários para DomainDataProduct, SalesDataProduct e CustomerDataProduct (36 testes)
 - **test_integration.py**: Testes de integração entre Data Products (2 testes)
-- **Cobertura**: > 80% do código-fonte
-- **Total de testes**: 38 testes passando ✅
+- **test_api_integration.py**: Testes para integração com APIs externas (11 testes)
+- **Cobertura**: 62% do código-fonte
+- **Total de testes**: 49 testes passando ✅
 
 ### Continuous Integration
 
