@@ -1,16 +1,11 @@
 # Data Mesh Implementation Framework
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
-![Tests](https://img.shields.io/github/actions/workflow/status/galafis/data-mesh-implementation-framework/tests.yml?branch=main&label=Tests&style=for-the-badge&logo=github)
 ![Pytest](https://img.shields.io/badge/Testing-Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
-![Coverage](https://img.shields.io/badge/Coverage-62%25-yellow?style=for-the-badge)
-![Tests](https://img.shields.io/badge/Tests-49%20Passing-success?style=for-the-badge)
 ![Requests](https://img.shields.io/badge/HTTP-Requests-2CA5E0?style=for-the-badge&logo=python&logoColor=white)
 ![Mermaid](https://img.shields.io/badge/Diagrams-Mermaid-orange?style=for-the-badge&logo=mermaid&logoColor=white)
 ![Data Mesh](https://img.shields.io/badge/Architecture-Data%20Mesh-purple?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
-![Security](https://img.shields.io/badge/Security-CodeQL%20Verified-brightgreen?style=for-the-badge)
 
 ---
 
