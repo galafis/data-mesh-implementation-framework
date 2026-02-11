@@ -339,10 +339,6 @@ python tests/test_domain_data_product.py
 - **Cobertura**: 62% do código-fonte
 - **Total de testes**: 49 testes passando ✅
 
-### Continuous Integration
-
-O projeto utiliza GitHub Actions para executar os testes automaticamente em múltiplas versões do Python (3.9, 3.10, 3.11, 3.12) a cada push ou pull request.
-
 ---
 
 ## 📚 API Documentation
@@ -594,9 +590,6 @@ data-mesh-implementation-framework/
 ├── images/                       # Imagens e screenshots
 │   ├── data_mesh_architecture.png
 │   └── data_mesh_implementation_framework.png
-├── .github/
-│   └── workflows/
-│       └── tests.yml            # GitHub Actions CI/CD
 ├── setup.py                     # Configuração de instalação
 ├── requirements.txt             # Dependências Python
 ├── .gitignore                   # Arquivos ignorados pelo Git
