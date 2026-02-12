@@ -102,7 +102,7 @@ Closes #123
 ### Testes
 
 * Escreva testes para todo código novo
-* Mantenha alta cobertura de testes (>80%)
+* Procure manter boa cobertura de testes
 * Execute todos os testes antes de enviar um pull request
 * Execute testes com: `python -m pytest tests/ -v`
 

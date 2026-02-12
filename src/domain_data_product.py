@@ -14,6 +14,7 @@ from datetime import datetime
 from enum import Enum
 import json
 import os
+import sys
 
 
 class DataProductStatus(Enum):
@@ -340,8 +341,9 @@ def example_usage():
     """
     
     # Importar os Data Products específicos
-    from sales_data_product import SalesDataProduct
-    from customer_data_product import CustomerDataProduct
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+    from src.sales_data_product import SalesDataProduct
+    from src.customer_data_product import CustomerDataProduct
 
     print("\n" + "=" * 80)
     print("Data Mesh Implementation Framework - Domain Data Product Example")

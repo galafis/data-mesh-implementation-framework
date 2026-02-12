@@ -8,13 +8,16 @@ Este módulo demonstra um produto de dados de clientes em uma arquitetura Data M
 utilizando o DomainDataProduct como base para gerenciamento de dados e metadados.
 """
 
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 from datetime import datetime
 import json
 import re
 from collections import defaultdict
 
-from .domain_data_product import DomainDataProduct, DataProductMetadata, DataSchema, DataProductSLA, DataProductStatus, DataQualityLevel
+try:
+    from .domain_data_product import DomainDataProduct, DataProductMetadata, DataSchema, DataProductSLA, DataProductStatus, DataQualityLevel
+except ImportError:
+    from domain_data_product import DomainDataProduct, DataProductMetadata, DataSchema, DataProductSLA, DataProductStatus, DataQualityLevel
 
 
 class CustomerDataProduct(DomainDataProduct):

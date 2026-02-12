@@ -11,11 +11,11 @@
 
 ## 🇧🇷 Framework de Implementação Data Mesh
 
-Este repositório apresenta um **framework abrangente e prático para a implementação de uma arquitetura Data Mesh**, focando em princípios de **domínio de dados**, **dados como produto**, **plataforma de dados self-service** e **governança federada**. O objetivo é capacitar organizações a construir ecossistemas de dados descentralizados, escaláveis e orientados a negócios, promovendo a agilidade e a inovação através de exemplos de código funcional e bem documentado.
+Este repositório contém um **framework para implementação de uma arquitetura Data Mesh**, cobrindo princípios de **domínio de dados**, **dados como produto**, **plataforma de dados self-service** e **governança federada**. Inclui exemplos de código funcional para ajudar equipes de dados a entender e aplicar esses conceitos na prática.
 
 ### 🎯 Objetivo
 
-O principal objetivo deste projeto é **fornecer um guia detalhado e exemplos de código funcional** para profissionais de dados (engenheiros de dados, cientistas de dados, arquitetos de dados) que buscam implementar ou aprimorar uma arquitetura Data Mesh. Serão abordados desde os conceitos fundamentais até as melhores práticas de engenharia, governança e operação, com foco na criação de **Data Products** robustos e acessíveis.
+O objetivo deste projeto é **fornecer exemplos de código funcional** para profissionais de dados (engenheiros de dados, cientistas de dados, arquitetos de dados) que buscam implementar ou entender uma arquitetura Data Mesh, cobrindo conceitos fundamentais e a criação de **Data Products**.
 
 ### ✨ Destaques
 
@@ -23,7 +23,7 @@ O principal objetivo deste projeto é **fornecer um guia detalhado e exemplos de
 - **Integração com APIs Externas**: Módulo `api_integration.py` que demonstra como enriquecer Data Products com dados reais de APIs públicas, incluindo integração completa com a World Bank API para dados de desenvolvimento mundial (GDP, população, indicadores econômicos).
 - **Operações CRUD e Métricas**: Exemplos práticos de ingestão, consulta, atualização e remoção de dados, além da coleta de métricas de uso e acesso para cada Data Product, garantindo observabilidade e governança.
 - **Estrutura Modular e Escalável**: O framework é projetado para ser modular, permitindo a fácil extensão e adaptação a diferentes domínios de negócio e requisitos de dados.
-- **Testes Abrangentes**: Inclui testes unitários e de integração para todas as funcionalidades, assegurando a confiabilidade e a correção das implementações dos Data Products.
+- **Testes Unitários e de Integração**: Inclui testes para as principais funcionalidades dos Data Products.
 - **Documentação Detalhada**: Cada componente é acompanhado de explicações claras, diagramas e exemplos de uso, facilitando a compreensão e a aplicação dos conceitos de Data Mesh.
 
 ### 🏛️ Princípios do Data Mesh em Ação
@@ -89,11 +89,11 @@ python tests/test_domain_data_product.py
 
 ## 🇬🇧 Data Mesh Implementation Framework
 
-This repository presents a **comprehensive and practical framework for implementing a Data Mesh architecture**, focusing on principles of **data domain ownership**, **data as a product**, **self-service data platform**, and **federated governance**. The goal is to empower organizations to build decentralized, scalable, and business-oriented data ecosystems, promoting agility and innovation through functional and well-documented code examples.
+This repository contains a **framework for implementing a Data Mesh architecture**, covering principles of **data domain ownership**, **data as a product**, **self-service data platform**, and **federated governance**. It includes functional code examples to help data teams understand and apply these concepts in practice.
 
 ### 🎯 Objective
 
-The main objective of this project is to **provide a detailed guide and functional code examples** for data professionals (data engineers, data scientists, data architects) looking to implement or improve a Data Mesh architecture. It will cover everything from fundamental concepts to best practices in engineering, governance, and operations, with a focus on creating robust and accessible **Data Products**.
+The objective of this project is to **provide functional code examples** for data professionals (data engineers, data scientists, data architects) looking to implement or understand a Data Mesh architecture, covering fundamental concepts and the creation of **Data Products**.
 
 ### ✨ Highlights
 
@@ -101,7 +101,7 @@ The main objective of this project is to **provide a detailed guide and function
 - **External API Integration**: `api_integration.py` module demonstrating how to enrich Data Products with real data from public APIs, including complete integration with the World Bank API for global development data (GDP, population, economic indicators).
 - **CRUD Operations and Metrics**: Practical examples of data ingestion, querying, updating, and removal, along with the collection of usage and access metrics for each Data Product, ensuring observability and governance.
 - **Modular and Scalable Structure**: The framework is designed to be modular, allowing for easy extension and adaptation to different business domains and data requirements.
-- **Comprehensive Testing**: Includes unit and integration tests for all functionalities, ensuring the reliability and correctness of the Data Product implementations.
+- **Unit and Integration Tests**: Includes tests for the main Data Product functionalities.
 - **Detailed Documentation**: Each component is accompanied by clear explanations, diagrams, and usage examples, facilitating the understanding and application of Data Mesh concepts.
 
 ### 🏛️ Data Mesh Principles in Action
@@ -143,10 +143,11 @@ Data Mesh is based on four fundamental principles that guide data decentralizati
 data-mesh-implementation-framework/
 ├── src/           # Código fonte e exemplos de implementação dos Data Products
 ├── data/          # Dados de exemplo (JSON) para simular ingestão e uso
+├── diagrams/      # Diagramas de arquitetura e fluxo (Mermaid)
+├── examples/      # Exemplos de uso do framework
 ├── images/        # Imagens e diagramas para o README e documentação
 ├── tests/         # Testes unitários e de integração para os Data Products
-├── docs/          # Documentação adicional e guias detalhados (a ser expandido)
-└── scripts/       # Scripts utilitários para automação (a ser expandido)
+└── docs/          # Documentação adicional e guias detalhados
 ```
 
 ---
@@ -227,7 +228,7 @@ if __name__ == "__main__":
         with open("data/sample_sales.json", "r") as f:
             sample_sales_data = json.load(f)
         for record in sample_sales_data:
-            sales_dp.ingest_data(record)
+            sales_dp.add_data(record)
         print(f"  {len(sample_sales_data)} registros de vendas ingeridos com sucesso.")
     except FileNotFoundError:
         print("  Erro: Arquivo data/sample_sales.json não encontrado. Certifique-se de que ele existe.")
@@ -248,7 +249,7 @@ if __name__ == "__main__":
         with open("data/sample_customers.json", "r") as f:
             sample_customers_data = json.load(f)
         for record in sample_customers_data:
-            customer_dp.ingest_data(record)
+            customer_dp.add_data(record)
         print(f"  {len(sample_customers_data)} registros de clientes ingeridos com sucesso.")
     except FileNotFoundError:
         print("  Erro: Arquivo data/sample_customers.json não encontrado. Certifique-se de que ele existe.")
@@ -260,20 +261,20 @@ if __name__ == "__main__":
     print("\n📊 Todas as transações de vendas:")
     all_sales = sales_dp.query()
     for sale in all_sales:
-        print(f"  - Venda ID: {sale.get("transaction_id")}, Cliente: {sale.get("customer_id")}, Valor: {sale.get("amount")}")
+        print(f"  - Venda ID: {sale.get('transaction_id')}, Cliente: {sale.get('customer_id')}, Valor: {sale.get('amount')}")
 
     print("\n🔍 Consultando clientes de 'New York':")
     ny_customers = customer_dp.query({"city": "New York"})
     for customer in ny_customers:
-        print(f"  - Cliente: {customer.get("name")}, Email: {customer.get("email")}")
+        print(f"  - Cliente: {customer.get('name')}, Email: {customer.get('email')}")
 
     # --- 4. Atualizando Dados ---
     print("\n--- 4. Atualizando Dados ---")
     print("  Atualizando o email do cliente 'Alice' (CUST001)...")
-    customer_dp.update_data("CUST001", {"email": "alice.new@example.com"})
+    customer_dp.update_data({"customer_id": "CUST001"}, {"email": "alice.new@example.com"})
     updated_alice = customer_dp.query({"customer_id": "CUST001"})
     if updated_alice: 
-        print(f"  Email de Alice atualizado para: {updated_alice[0].get("email")}")
+        print(f"  Email de Alice atualizado para: {updated_alice[0].get('email')}")
 
     # --- 5. Removendo Dados ---
     print("\n--- 5. Removendo Dados ---")
@@ -298,7 +299,7 @@ if __name__ == "__main__":
             print(f"  - {key}: {value}")
 
     print("\n📜 Log de Acessos do CustomerDataProduct:")
-    for log_entry in customer_dp.get_access_log():
+    for log_entry in customer_dp._access_log:
         print(f"  - {log_entry}")
 
     print("\n==================================================")
@@ -312,7 +313,7 @@ if __name__ == "__main__":
 
 ## 🧪 Testes / Testing
 
-O framework possui uma suite completa de testes com cobertura superior a 80%.
+O framework inclui testes unitários e de integração.
 
 ### Executando os Testes / Running Tests
 
@@ -333,15 +334,9 @@ python tests/test_domain_data_product.py
 
 ### Estrutura de Testes / Test Structure
 
-- **test_domain_data_product.py**: Testes unitários para DomainDataProduct, SalesDataProduct e CustomerDataProduct (36 testes)
-- **test_integration.py**: Testes de integração entre Data Products (2 testes)
-- **test_api_integration.py**: Testes para integração com APIs externas (11 testes)
-- **Cobertura**: 62% do código-fonte
-- **Total de testes**: 49 testes passando ✅
-
-### Continuous Integration
-
-O projeto utiliza GitHub Actions para executar os testes automaticamente em múltiplas versões do Python (3.9, 3.10, 3.11, 3.12) a cada push ou pull request.
+- **test_domain_data_product.py**: Testes unitários para DomainDataProduct, SalesDataProduct e CustomerDataProduct
+- **test_integration.py**: Testes de integração entre Data Products
+- **test_api_integration.py**: Testes para integração com APIs externas
 
 ---
 
@@ -581,7 +576,8 @@ data-mesh-implementation-framework/
 │   └── api_integration.py       # Integração com APIs externas
 ├── tests/                        # Testes unitários e de integração
 │   ├── test_domain_data_product.py
-│   └── test_integration.py
+│   ├── test_integration.py
+│   └── test_api_integration.py
 ├── data/                         # Dados de exemplo
 │   ├── sample_sales.json
 │   └── sample_customers.json
@@ -591,19 +587,18 @@ data-mesh-implementation-framework/
 │   ├── data_mesh_architecture.mmd
 │   ├── data_product_interaction.mmd
 │   └── data_product_interaction.png
+├── examples/                     # Exemplos de uso
+│   ├── basic_example.py
+│   └── README.md
 ├── images/                       # Imagens e screenshots
 │   ├── data_mesh_architecture.png
 │   └── data_mesh_implementation_framework.png
-├── .github/
-│   └── workflows/
-│       └── tests.yml            # GitHub Actions CI/CD
 ├── setup.py                     # Configuração de instalação
 ├── requirements.txt             # Dependências Python
 ├── .gitignore                   # Arquivos ignorados pelo Git
 ├── LICENSE                      # Licença MIT
 ├── README.md                    # Este arquivo
-├── CONTRIBUTING.md              # Guia de contribuição
-└── CHANGELOG.md                 # Histórico de mudanças
+└── CONTRIBUTING.md              # Guia de contribuição
 ```
 
 ### Fluxo de Dados
@@ -766,16 +761,11 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 ### Documentação
 - [Princípios do Data Mesh](docs/data_mesh_principles.md)
 - [Guia de Contribuição](CONTRIBUTING.md)
-- [Histórico de Mudanças](CHANGELOG.md)
 
 ### Links Úteis
 - [Data Mesh - Martin Fowler](https://martinfowler.com/articles/data-mesh-principles.html)
 - [Data Mesh Book by Zhamak Dehghani](https://www.oreilly.com/library/view/data-mesh/9781492092384/)
 - [World Bank API Documentation](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation)
-
----
-
-**⭐ Se este projeto foi útil para você, considere dar uma estrela no GitHub!**
 
 ---
 

@@ -442,11 +442,11 @@ if __name__ == "__main__":
     runner = unittest.TextTestRunner(verbosity=2)
     # Criar uma suíte de testes e adicionar todos os testes de cada classe
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestDomainDataProduct))
-    suite.addTest(unittest.makeSuite(TestSalesDataProduct))
-    suite.addTest(unittest.makeSuite(TestCustomerDataProduct))
-    suite.addTest(unittest.makeSuite(TestDataProductMetadata))
-    suite.addTest(unittest.makeSuite(TestDataSchema))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestDomainDataProduct))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestSalesDataProduct))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestCustomerDataProduct))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestDataProductMetadata))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestDataSchema))
     
     # Executar a suíte de testes
     result = runner.run(suite)

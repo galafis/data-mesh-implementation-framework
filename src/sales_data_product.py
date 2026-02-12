@@ -13,7 +13,10 @@ from datetime import datetime
 import json
 from collections import defaultdict
 
-from .domain_data_product import DomainDataProduct, DataProductMetadata, DataSchema, DataProductSLA, DataProductStatus, DataQualityLevel
+try:
+    from .domain_data_product import DomainDataProduct, DataProductMetadata, DataSchema, DataProductSLA, DataProductStatus, DataQualityLevel
+except ImportError:
+    from domain_data_product import DomainDataProduct, DataProductMetadata, DataSchema, DataProductSLA, DataProductStatus, DataQualityLevel
 
 
 class SalesDataProduct(DomainDataProduct):

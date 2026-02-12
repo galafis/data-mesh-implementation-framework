@@ -32,12 +32,11 @@ setup(
     ],
     python_requires=">=3.9",
     install_requires=[
-        "pandas>=2.0.0",
         "requests>=2.31.0",
     ],
     extras_require={
         "dev": [
-            "pytest>=8.0.0",
+            "pytest>=7.0.0",
             "pytest-cov>=4.0.0",
         ],
     },
