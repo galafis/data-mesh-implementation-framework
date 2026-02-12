@@ -334,9 +334,17 @@ python tests/test_domain_data_product.py
 
 ### Estrutura de Testes / Test Structure
 
+<<<<<<< HEAD
 - **test_domain_data_product.py**: Testes unitários para DomainDataProduct, SalesDataProduct e CustomerDataProduct
 - **test_integration.py**: Testes de integração entre Data Products
 - **test_api_integration.py**: Testes para integração com APIs externas
+=======
+- **test_domain_data_product.py**: Testes unitários para DomainDataProduct, SalesDataProduct e CustomerDataProduct (36 testes)
+- **test_integration.py**: Testes de integração entre Data Products (2 testes)
+- **test_api_integration.py**: Testes para integração com APIs externas (11 testes)
+- **Cobertura**: 62% do código-fonte
+- **Total de testes**: 49 testes passando ✅
+>>>>>>> d7cb6cbfa45b7e8008b0ac389bc5df925cc8c2c5
 
 ---
 
