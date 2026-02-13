@@ -1,115 +1,204 @@
-# 📊 Data Mesh Implementation Framework
+# Data Mesh Implementation Framework
 
-> Data mesh implementation framework applying domain-driven design to data architecture. Enables decentralized data ownership, self-serve platforms, and federated governance.
+Framework demonstrativo de Data Mesh em Python com Data Products, validacao de schema e integracao com API do World Bank.
 
-[![Python](https://img.shields.io/badge/Python-3.12-3776AB.svg)](https://img.shields.io/badge/)
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[English](#english) | [Português](#português)
+[English](#english) | [Portugues](#portugues)
+
+---
+
+## Portugues
+
+### Visao Geral
+
+Implementacao demonstrativa dos conceitos de Data Mesh em Python puro. Fornece classes de Data Products com validacao de schema, operacoes CRUD em memoria, rastreamento de linhagem de dados, e integracao com a API REST do World Bank para dados de indicadores por pais.
+
+Todos os dados sao armazenados em memoria (listas de dicionarios). Nao ha persistencia em banco de dados, orquestracao de pipelines, ou infraestrutura real de Data Mesh.
+
+### Arquitetura
+
+```mermaid
+graph TB
+    subgraph DataProducts["Data Products"]
+        A[DomainDataProduct - Base]
+        B[SalesDataProduct]
+        C[CustomerDataProduct]
+    end
+
+    subgraph Funcionalidades["Funcionalidades"]
+        D[Validacao de Schema]
+        E[CRUD em Memoria]
+        F[Metricas e Relatorios]
+        G[Linhagem de Dados]
+    end
+
+    subgraph Externo["Integracao Externa"]
+        H[World Bank API]
+        I[WorldBankAPIIntegration]
+    end
+
+    A --> D
+    A --> E
+    A --> G
+    B --> F
+    C --> F
+    B -.-> A
+    C -.-> A
+    I --> H
+```
+
+### Funcionalidades
+
+- **Data Products** — classes base e especializadas com validacao de schema
+- **CRUD em memoria** — adicionar, atualizar, remover e buscar registros
+- **Validacao de schema** — verificacao de tipos (str, int, float, bool, datetime) nos dados de entrada
+- **Metricas de vendas** — receita total, por categoria, ticket medio
+- **Segmentacao de clientes** — segmentos customizaveis por criterios
+- **Qualidade de dados** — relatorio de campos nulos, registros duplicados
+- **Linhagem de dados** — rastreamento de dependencias entre Data Products
+- **Log de acesso** — historico de operacoes por Data Product
+- **Integracao World Bank API** — busca de indicadores economicos por pais
+
+### Como Executar
+
+```bash
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Executar exemplo basico
+python examples/basic_example.py
+
+# Executar testes (49 testes)
+pytest -v
+
+# Uso programatico
+python -c "
+from src.sales_data_product import SalesDataProduct
+sp = SalesDataProduct('vendas', {'transaction_id': 'str', 'product': 'str', 'amount': 'float'})
+sp.add_data({'transaction_id': 'T001', 'product': 'Widget', 'amount': 29.99})
+print(sp.get_sales_metrics())
+"
+```
+
+### Estrutura do Projeto
+
+```
+data-mesh-implementation-framework/
+├── data/
+│   ├── sample_customers.json
+│   └── sample_sales.json
+├── diagrams/
+│   ├── data_mesh_architecture.mmd
+│   └── data_product_interaction.mmd
+├── docs/
+│   └── data_mesh_principles.md
+├── examples/
+│   ├── README.md
+│   └── basic_example.py
+├── src/
+│   ├── __init__.py
+│   ├── api_integration.py          # World Bank API (~185 linhas)
+│   ├── customer_data_product.py    # Segmentacao de clientes (~170 linhas)
+│   ├── domain_data_product.py      # Classe base (~345 linhas)
+│   └── sales_data_product.py       # Metricas de vendas (~160 linhas)
+├── tests/
+│   ├── __init__.py
+│   ├── test_api_integration.py     # Testes da API
+│   ├── test_domain_data_product.py # Testes do Data Product base
+│   └── test_integration.py         # Testes de integracao
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── setup.py
+```
+
+### Tecnologias
+
+| Tecnologia | Uso |
+|------------|-----|
+| Python | Linguagem principal |
+| requests | Chamadas HTTP (World Bank API) |
+| pytest | Framework de testes |
 
 ---
 
 ## English
 
-### 🎯 Overview
+### Overview
 
-**Data Mesh Implementation Framework** is a production-grade Python application that showcases modern software engineering practices including clean architecture, comprehensive testing, containerized deployment, and CI/CD readiness.
+Demonstrative implementation of Data Mesh concepts in pure Python. Provides Data Product classes with schema validation, in-memory CRUD operations, data lineage tracking, and World Bank REST API integration for country indicator data.
 
-The codebase comprises **2,522 lines** of source code organized across **10 modules**, following industry best practices for maintainability, scalability, and code quality.
+All data is stored in memory (lists of dicts). There is no database persistence, pipeline orchestration, or real Data Mesh infrastructure.
 
-### ✨ Key Features
-
-- **🔄 Data Pipeline**: Scalable ETL with parallel processing
-- **✅ Data Validation**: Schema validation and quality checks
-- **📊 Monitoring**: Pipeline health metrics and alerting
-- **🔧 Configurability**: YAML/JSON-based pipeline configuration
-- **🏗️ Object-Oriented**: 15 core classes with clean architecture
-
-### 🏗️ Architecture
+### Architecture
 
 ```mermaid
 graph TB
-    subgraph Core["🏗️ Core"]
-        A[Main Module]
-        B[Business Logic]
-        C[Data Processing]
+    subgraph DataProducts["Data Products"]
+        A[DomainDataProduct - Base]
+        B[SalesDataProduct]
+        C[CustomerDataProduct]
     end
-    
-    subgraph Support["🔧 Support"]
-        D[Configuration]
-        E[Utilities]
-        F[Tests]
+
+    subgraph Features["Features"]
+        D[Schema Validation]
+        E[In-Memory CRUD]
+        F[Metrics and Reports]
+        G[Data Lineage]
     end
-    
-    A --> B --> C
-    D --> A
-    E --> B
-    F -.-> B
-    
-    style Core fill:#e1f5fe
-    style Support fill:#f3e5f5
+
+    subgraph External["External Integration"]
+        H[World Bank API]
+        I[WorldBankAPIIntegration]
+    end
+
+    A --> D
+    A --> E
+    A --> G
+    B --> F
+    C --> F
+    B -.-> A
+    C -.-> A
+    I --> H
 ```
 
-```mermaid
-classDiagram
-    class DataSchema
-    class DataProductStatus
-    class SalesDataProduct
-    class DataQualityLevel
-    class ExternalDataEnricher
-    class DomainDataProduct
-    class WorldBankAPIIntegration
-    class DataProductMetadata
-    class DataProductSLA
-    class CustomerDataProduct
-```
+### Features
 
-### 🚀 Quick Start
+- **Data Products** — base and specialized classes with schema validation
+- **In-memory CRUD** — add, update, remove, and query records
+- **Schema validation** — type checking (str, int, float, bool, datetime) on input data
+- **Sales metrics** — total revenue, by category, average ticket
+- **Customer segmentation** — customizable segments by criteria
+- **Data quality** — null field and duplicate record reports
+- **Data lineage** — dependency tracking between Data Products
+- **Access logging** — operation history per Data Product
+- **World Bank API integration** — country economic indicator fetching
 
-#### Prerequisites
-
-- Python 3.12+
-- pip (Python package manager)
-
-#### Installation
+### How to Run
 
 ```bash
-# Clone the repository
-git clone https://github.com/galafis/data-mesh-implementation-framework.git
-cd data-mesh-implementation-framework
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
 # Install dependencies
 pip install -r requirements.txt
+
+# Run basic example
+python examples/basic_example.py
+
+# Run tests (49 tests)
+pytest -v
+
+# Programmatic usage
+python -c "
+from src.sales_data_product import SalesDataProduct
+sp = SalesDataProduct('sales', {'transaction_id': 'str', 'product': 'str', 'amount': 'float'})
+sp.add_data({'transaction_id': 'T001', 'product': 'Widget', 'amount': 29.99})
+print(sp.get_sales_metrics())
+"
 ```
 
-#### Running
-
-```bash
-# Run the application
-python src/main.py
-```
-
-### 🧪 Testing
-
-```bash
-# Run all tests
-pytest
-
-# Run with coverage report
-pytest --cov --cov-report=html
-
-# Run specific test module
-pytest tests/test_main.py -v
-
-# Run with detailed output
-pytest -v --tb=short
-```
-
-### 📁 Project Structure
+### Project Structure
 
 ```
 data-mesh-implementation-framework/
@@ -117,190 +206,41 @@ data-mesh-implementation-framework/
 │   ├── sample_customers.json
 │   └── sample_sales.json
 ├── diagrams/
-├── docs/          # Documentation
+│   ├── data_mesh_architecture.mmd
+│   └── data_product_interaction.mmd
+├── docs/
 │   └── data_mesh_principles.md
 ├── examples/
 │   ├── README.md
 │   └── basic_example.py
-├── images/
-├── src/          # Source code
+├── src/
 │   ├── __init__.py
-│   ├── api_integration.py
-│   ├── customer_data_product.py
-│   ├── domain_data_product.py
-│   └── sales_data_product.py
-├── tests/         # Test suite
-│   ├── test_api_integration.py
-│   ├── test_domain_data_product.py
-│   └── test_integration.py
-├── CONTRIBUTING.md
+│   ├── api_integration.py          # World Bank API (~185 lines)
+│   ├── customer_data_product.py    # Customer segmentation (~170 lines)
+│   ├── domain_data_product.py      # Base class (~345 lines)
+│   └── sales_data_product.py       # Sales metrics (~160 lines)
+├── tests/
+│   ├── __init__.py
+│   ├── test_api_integration.py     # API tests
+│   ├── test_domain_data_product.py # Base Data Product tests
+│   └── test_integration.py         # Integration tests
+├── .gitignore
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
 └── setup.py
 ```
 
-### 🛠️ Tech Stack
+### Technologies
 
-| Technology | Description | Role |
-|------------|-------------|------|
-| **Python** | Core Language | Primary |
-
-### 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### 👤 Author
-
-**Gabriel Demetrios Lafis**
-- GitHub: [@galafis](https://github.com/galafis)
-- LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
+| Technology | Usage |
+|------------|-------|
+| Python | Core language |
+| requests | HTTP calls (World Bank API) |
+| pytest | Testing framework |
 
 ---
 
-## Português
-
-### 🎯 Visão Geral
-
-**Data Mesh Implementation Framework** é uma aplicação Python de nível profissional que demonstra práticas modernas de engenharia de software, incluindo arquitetura limpa, testes abrangentes, implantação containerizada e prontidão para CI/CD.
-
-A base de código compreende **2,522 linhas** de código-fonte organizadas em **10 módulos**, seguindo as melhores práticas do setor para manutenibilidade, escalabilidade e qualidade de código.
-
-### ✨ Funcionalidades Principais
-
-- **🔄 Data Pipeline**: Scalable ETL with parallel processing
-- **✅ Data Validation**: Schema validation and quality checks
-- **📊 Monitoring**: Pipeline health metrics and alerting
-- **🔧 Configurability**: YAML/JSON-based pipeline configuration
-- **🏗️ Object-Oriented**: 15 core classes with clean architecture
-
-### 🏗️ Arquitetura
-
-```mermaid
-graph TB
-    subgraph Core["🏗️ Core"]
-        A[Main Module]
-        B[Business Logic]
-        C[Data Processing]
-    end
-    
-    subgraph Support["🔧 Support"]
-        D[Configuration]
-        E[Utilities]
-        F[Tests]
-    end
-    
-    A --> B --> C
-    D --> A
-    E --> B
-    F -.-> B
-    
-    style Core fill:#e1f5fe
-    style Support fill:#f3e5f5
-```
-
-### 🚀 Início Rápido
-
-#### Prerequisites
-
-- Python 3.12+
-- pip (Python package manager)
-
-#### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/galafis/data-mesh-implementation-framework.git
-cd data-mesh-implementation-framework
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-#### Running
-
-```bash
-# Run the application
-python src/main.py
-```
-
-### 🧪 Testing
-
-```bash
-# Run all tests
-pytest
-
-# Run with coverage report
-pytest --cov --cov-report=html
-
-# Run specific test module
-pytest tests/test_main.py -v
-
-# Run with detailed output
-pytest -v --tb=short
-```
-
-### 📁 Estrutura do Projeto
-
-```
-data-mesh-implementation-framework/
-├── data/
-│   ├── sample_customers.json
-│   └── sample_sales.json
-├── diagrams/
-├── docs/          # Documentation
-│   └── data_mesh_principles.md
-├── examples/
-│   ├── README.md
-│   └── basic_example.py
-├── images/
-├── src/          # Source code
-│   ├── __init__.py
-│   ├── api_integration.py
-│   ├── customer_data_product.py
-│   ├── domain_data_product.py
-│   └── sales_data_product.py
-├── tests/         # Test suite
-│   ├── test_api_integration.py
-│   ├── test_domain_data_product.py
-│   └── test_integration.py
-├── CONTRIBUTING.md
-├── LICENSE
-├── README.md
-├── requirements.txt
-└── setup.py
-```
-
-### 🛠️ Stack Tecnológica
-
-| Tecnologia | Descrição | Papel |
-|------------|-----------|-------|
-| **Python** | Core Language | Primary |
-
-### 🤝 Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request.
-
-### 📄 Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-### 👤 Autor
-
-**Gabriel Demetrios Lafis**
+**Autor / Author:** Gabriel Demetrios Lafis
 - GitHub: [@galafis](https://github.com/galafis)
 - LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
